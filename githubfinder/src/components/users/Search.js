@@ -1,32 +1,34 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Search = ({ searchUsers, showClear, clearUsers }) => {
+// Converted a class-based component that had state into a
+// functional component that has state using the useState Hook
+const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 	// destructure text (this piece of state), then add a method
-	// for setting that piece of state, then put in a default value
+	// for setting that piece of state, then put in a default value (useState(''))
 	const [text, setText] = useState('')
 
-	const onChange = (e) => this.setText(e.target.value)
+	const onChange = (e) => setText(e.target.value)
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-		if (this.state.text === '') {
-			this.props.setAlert('Please enter something', 'light')
+		if (text === '') {
+			setAlert('Please enter something', 'light')
 		} else {
-			this.props.searchUsers(this.state.text)
-			this.setState({ text: '' })
+			searchUsers(text)
+			setText('')
 		}
 	}
 
 	return (
 		<div>
-			<form onSubmit={this.onSubmit} className='form'>
+			<form onSubmit={onSubmit} className='form'>
 				<input
 					type='text'
 					name='text'
 					placeholder='Search Users...'
-					value={this.state.text}
-					onChange={this.onChange}
+					value={text}
+					onChange={onChange}
 				/>
 				<input type='submit' className='btn btn-dark btn-block' />
 			</form>
