@@ -16,4 +16,4 @@ Functions that let us hook into react state and lifecycle features from a functi
 
 - cloud that hovers over application that we can get stuff from
 - helps remove prop drilling
-  <img src='./public/contextapidiagram' />
+  <img src='./public/contextapidiagram' alt=''/>
